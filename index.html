@@ -1,25 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuizApp</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuizApp</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
 
 </head>
 
-<body>
+<body onload="init()">
 
-      <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-          <span class="navbar-brand mb-0 h1">Quiz App</span>
+  <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Quiz App</span>
+    </div>
+  </nav>
+
+  <div class="start" id="start"></div>
+  <div class="card_container" id="complete_container">
+
+    <div class="card" style="width: 25rem;">
+      <img src="./img/quiz.jpg" id="start_image" class="card-img-top" alt="...">
+
+      <div class="progress">
+      <div class="progress-bar" id="progress" role="progressbar" style="width: 0%"></div>
+      </div>
+
+      <div class="card-body" id="questionbody">
+        <h5 class="card-title" id="questiontext"></h5>
+
+        <div class="card mb-2 fill_color" onclick="answer('answer_1')">
+          <div class="card-body" id="answer_1"></div>
         </div>
-      </nav>
 
+        <div class="card mb-2 fill_color" onclick="answer('answer_2')">
+          <div class="card-body" id="answer_2"></div>
+        </div>
 
+        <div class="card mb-2 fill_color" onclick="answer('answer_3')">
+          <div class="card-body" id="answer_3"></div>
+        </div>
+
+        <div class="card mb-2 fill_color" onclick="answer('answer_4')">
+          <div class="card-body" id="answer_4"></div>
+        </div>
+      </div>
+  <!-- ==================== Endbildschirm ============================== -->
+      <div class="card-body" id="endScreen" style="display: none;">
+
+        <div class="text_center">Quiz beendet!</div>
+
+        <div class="end_footer text_center">
+          <p>Du hast
+          <b id="amount_of_right_questions"></b> 
+          von 
+          <b id="amount_of_questions"></b> 
+          Fragen richtig beantwortet!
+          </p>
+        </div>
+        <button onclick="restartGame()" id="restart" type="button" class="btn btn-warning">Neu starten</button>
+      </div>
+
+      
+      
+<!-- ==================== Footer ============================== -->
+      <div id="end" class="question_footer width_100 text_center">
+        <p><b id="question_number"></b> von <b id="all_questions"></b></p>
+        <button onclick="nextQuestion()" id="next_button" type="button" disabled class="btn btn-warning">Nächste
+          Frage</button> <!--disabled = nicht mehr anklickbar (ausgegraut)-->
+      </div>
+
+    </div>
+  </div>
+  </div>
 
 </body>
 
